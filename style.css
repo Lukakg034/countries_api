@@ -1,0 +1,264 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Poppins", "Sans-Serif";
+}
+body {
+  /* max-height: 100vh; */
+  font-weight: 400;
+  line-height: 1.8rem;
+}
+
+.wrap_container {
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: rgb(244, 223, 182); */
+}
+
+/* Aside search option and accordion styles */
+
+aside {
+  display: flex;
+  flex-direction: column;
+}
+.accordion_container {
+  font-size: 1.4rem;
+}
+.inner_container {
+  display: flex;
+  /* flex-direction: column; */
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+.accordion_container input {
+  /* display: none; */
+}
+.primary_checkbox {
+  display: none;
+}
+.secondary_checkbox {
+  /* display: inline-block; */
+}
+li {
+  display: block;
+  background-color: blueviolet;
+  padding: 0.5rem 1rem;
+}
+.accordion_container .main_label {
+  display: block;
+  background: rgb(122, 104, 104);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+.main_label {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.accordion_container input:checked ~ .continent_options {
+  height: 22rem;
+}
+
+.continent_options {
+  /* display: block; */
+  height: 0px;
+  list-style: none;
+  overflow: scroll;
+}
+
+.wrapper {
+  color: bisque;
+  padding: 1rem 2rem;
+}
+/* Main container styles */
+
+.main_container {
+  /* height: 100vh; */
+
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter {
+  margin: 5rem 2rem;
+  /* padding-top: 5rem; */
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  /* flex-basis: 20%; */
+  /* grid-column-start: 1;
+  grid-column-end: 2; */
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  /* width: 100%; */
+}
+.search_text {
+  padding: 1.2rem 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  border-radius: 2rem;
+}
+.search_btn {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.8rem;
+  margin-top: 2rem;
+  padding: 1.2rem 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.countries_card_container {
+  /* grid-column-start: 2;
+  grid-column-end: 3; */
+  flex-basis: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 5rem;
+}
+
+.country_card {
+  font-size: 1.4rem;
+  background-color: rgba(0, 0, 0, 0.051);
+
+  height: 55rem;
+  width: 30rem;
+  max-height: max-content;
+  /* overflow: auto; */
+}
+/* Flickering flip fix */
+.country_card:hover .card {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.card {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 1.5rem 4rem rgba(246, 243, 243, 0.15);
+  position: relative;
+}
+.card_front {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.card_back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  background-color: aqua;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+/* .card_flip {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+} */
+.card:hover {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.card_picture {
+  background-size: cover;
+  padding: 2rem 2rem;
+  /* height: 10rem; */
+  /* background-image: url(france.svg); */
+}
+img {
+  width: 100%;
+  height: 13rem;
+}
+
+.country_data {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.country_name {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+  line-height: 2.5rem;
+  text-align: center;
+  min-height: 5rem;
+}
+.country_capital {
+  margin-top: 1rem;
+}
+.country_region {
+  margin-top: 1rem;
+}
+.country_row {
+  margin-top: 2rem;
+}
+/* i {
+  display: block;
+  height: 1rem;
+  width: 1rem;
+} */
+.fa-solid {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 2rem;
+}
+
+.map {
+  height: 40rem;
+  width: 30rem;
+  /* background-color: aquamarine; */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
