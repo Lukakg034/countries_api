@@ -1,9 +1,10 @@
 "use strict";
-
-// const { map } = require("leaflet");
-
-// const { map } = require("leaflet");
-
+//TODO Fix the zoom display level on bigger countries (e.g. Russia, China)
+//TODO Add error display on: invalid input, country not found, fetch failed...
+//TODO Add list of all countries
+//TODO Add sort option by alphabet, continent, population
+//TODO Add option to display accurately population which is < million
+//TODO Adjust card design for countries that have longer names (three rows)
 //TODO Refactor functions to work for search/filter dropdown which will be displayed on the page
 //TODO Implement wikipedia link on country name and city
 
@@ -41,38 +42,6 @@ searchField.addEventListener("keyup", function (event) {
     getCountryData(searchValue);
   }
 });
-// Trying to display all countries to the dom
-displayAll.addEventListener("click", () => {
-  const getCountryData = function () {
-    try {
-      fetch(`https://restcountries.com/v3.1/all`)
-        // fetch(apiUrl)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          // renderCountry(Array.isArray(data) ? data : [data]);
-          // searchField.value = "";
-          //Getting all data from the api
-          let allData = data;
-          // renderCountry(Array.isArray(allData) ? allData : [allData]);
-          console.log(...allData);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  getCountryData();
-});
-
-//Notworking atm
-// countryCard.addEventListener("mouseleave", function (event) {
-//   const card = event.target.closest(".country_card");
-//   if (card) {
-//     console.log("Going out");
-//     // card.classList.remove("card_flip");
-//   }
-// });
 
 // Function for getting data from the API call
 const getCountryData = function (country) {
@@ -104,8 +73,6 @@ const renderCountry = function (countries) {
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
     currentMap
   );
-
-  // L.marker([latitude, longitude]).addTo(map).bindPopup("Hello");
   let latitude, longitude;
 
   // Accesing data and storing it in variables
@@ -136,19 +103,7 @@ const renderCountry = function (countries) {
 
     // Accessing 3 digit country code and creating unique ID for each map
     const mapContainerId = `map_${data.cca3}`;
-    console.log(mapContainerId);
 
-    // document.addEventListener("DOMContentLoaded", function () {
-    // const loaded = document.addEventListener("load", function () {
-
-    // console.log(map);
-    // });
-    // });
-    // const countryMapMarkup = `<div class="card_map">
-    //                             <div class="map" id="${mapContainerId}">
-    //                             </div>
-    //                           </div>`;
-    // console.log(countryMapMarkup);
     const countryCardMarkup = `<article class="country_card">
     <div class="card">
       <div class="card_front">
@@ -187,7 +142,6 @@ const renderCountry = function (countries) {
     </div>
   </article>
   `;
-    // countryCard.innerHTML = htmlMarkup;
     htmlMarkup += countryCardMarkup;
   });
   countryCard.innerHTML = htmlMarkup;
@@ -202,8 +156,3 @@ const renderCountry = function (countries) {
     L.marker([latitude, longitude]).addTo(map).bindPopup("Hello");
   });
 };
-//TODO Add if condition for bigger countries and their zoom level
-//TODO Add list of all countries
-//TODO Add sort by alphabet, continent, population
-//TODO Fix card height
-//TODO Adjust page with flex or grid and style it generally
